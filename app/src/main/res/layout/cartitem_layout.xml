@@ -11,6 +11,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
         android:elevation="3dp"
+        android:background="#eefa84"
         card_view:cardCornerRadius="@dimen/card_album_radius">
 
         <RelativeLayout
@@ -21,9 +22,24 @@
                 android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/album_cover_height"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:background="#fcd539"
                 android:clickable="true"
                 android:scaleType="fitXY" />
+
+<TextView
+    android:id="@+id/textview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#0d0d0d"
+    android:textSize="15sp"
+    android:text="himanshi"
+  android:layout_alignBottom="@+id/thumbnail"
+    android:textStyle="bold"
+    android:layout_marginBottom="15dp"
+    android:layout_centerInParent="true"
+    />
+
+
 
         </RelativeLayout>
 
