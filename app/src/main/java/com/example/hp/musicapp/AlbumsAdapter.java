@@ -1,5 +1,6 @@
 package com.example.hp.musicapp;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,14 +27,40 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     private Context mContext;
     private List<Album> albumList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView title;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
             super(view);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            view.setClickable(true);
+            thumbnail.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            int pos=getPosition();
+            switch (pos){
+                case 0:
+                    Toast.makeText(mContext, "1 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Toast.makeText(mContext, "2 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    FestivalSongs frag=new FestivalSongs();
+                case 3:
+                    Toast.makeText(mContext, "4 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 4:
+                    Toast.makeText(mContext, "5 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 5:
+                    Toast.makeText(mContext, "6 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
 
@@ -46,6 +74,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cartitem_layout, parent, false);
+
 
         return new MyViewHolder(itemView);
     }

@@ -25,11 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-
         albumList = new ArrayList<>();
         adapter = new AlbumsAdapter(this, albumList);
 
@@ -50,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
                 R.mipmap.ic_launcher,
                 R.mipmap.ic_launcher,
         };
-        Album a = new Album("hauman  Arti", 13, covers[0]);
+        Album a = new Album("hanuman  Arti", 13, covers[0]);
         albumList.add(a);
 
-        a = new Album("Hauman chalisa", 8, covers[1]);
+        a = new Album("Hanuman chalisa", 8, covers[1]);
         albumList.add(a);
 
-        a = new Album("Ganapati", 11, covers[2]);
+        a = new Album("Ganpati", 11, covers[2]);
         albumList.add(a);
 
-        a = new Album("Ganapati Arti", 12, covers[3]);
+        a = new Album("Ganpati Arti", 12, covers[3]);
         albumList.add(a);
 
         a = new Album("Laxmi Arti", 14, covers[4]);
@@ -67,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         a = new Album("Laxmi ji", 1, covers[5]);
         albumList.add(a);
-
-
-
-
-
-
 
         adapter.notifyDataSetChanged();
     }
