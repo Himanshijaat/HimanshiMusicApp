@@ -4,13 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hp.musicapp.MainActivity"
-    android:orientation="vertical">
+    tools:context="com.example.hp.musicapp.HomeFragment"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+   >
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:title="MusicApp"
+        android:background="@color/colorPrimary"/>
+
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:src="@drawable/om1"
-    android:layout_marginTop="10dp"/>
+    android:src="@drawable/om2"
+    android:layout_marginTop="10dp"
+    android:paddingBottom="10dp"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

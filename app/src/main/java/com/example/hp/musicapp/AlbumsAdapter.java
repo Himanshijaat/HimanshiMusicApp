@@ -25,14 +25,24 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     private Context mContext;
     private List<Album> albumList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView textView;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
             super(view);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
+            textView=(TextView)view.findViewById(R.id.textview);
+            view.setOnClickListener(this);
+            view.setClickable(true);
+            thumbnail.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position=getPosition();
+            Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -53,9 +63,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Album album = albumList.get(position);
-
-
-
+        holder.textView.setText(album.getName());
         // loading album cover using Glide library
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
 
