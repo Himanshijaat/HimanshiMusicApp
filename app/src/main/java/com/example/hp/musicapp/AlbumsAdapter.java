@@ -62,7 +62,8 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                     Toast.makeText(mContext, "4 pressed", Toast.LENGTH_SHORT).show();
                     break;
                 case 4:
-
+                    Toast.makeText(mContext, "4 pressed", Toast.LENGTH_SHORT).show();
+                    break;
                 case 5:
                     Toast.makeText(mContext, "6 pressed", Toast.LENGTH_SHORT).show();
                     break;
