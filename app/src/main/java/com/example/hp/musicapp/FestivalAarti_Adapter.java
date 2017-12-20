@@ -55,7 +55,7 @@ public class FestivalAarti_Adapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
         Holder holder=new Holder();
-        View rowView=inflater.inflate(R.layout.festivalAarti_item,null);
+        View rowView=inflater.inflate(R.layout.festivalaarti_item,null);
         holder.festName=(TextView) rowView.findViewById(R.id.festivalName);
         holder.festImage=(ImageView)rowView.findViewById(R.id.festivalImage);
         holder.festImage.setImageResource(festImage[position]);

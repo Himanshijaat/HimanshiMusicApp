@@ -23,7 +23,7 @@ public class FestivalAarti_Frag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-       View view=inflater.inflate(R.layout.festivalAarti_frag,container,false);
+       View view=inflater.inflate(R.layout.festivalaarti_frag,container,false);
 
 
 
