@@ -62,7 +62,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     break;
                 case 4:
                     FestivalAarti_Frag frag4=new FestivalAarti_Frag();
-                    android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
+                     android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft1=fm1.beginTransaction();
                     ft1.replace(R.id.framelayout,frag4);
                     ft1.addToBackStack(null);
@@ -86,7 +86,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.homelayout_item, parent, false);
+                .inflate(R.layout.homeLayout_item, parent, false);
 
         return new MyViewHolder(itemView);
     }
