@@ -3,15 +3,15 @@ package com.example.hp.musicapp;
 /**
  * Created by Lincoln on 18/05/16.
  */
-public class Album {
+public class Main_Bean {
     private String name;
     private int numOfSongs;
     private int thumbnail;
 
-    public Album() {
+    public Main_Bean() {
     }
 
-    public Album(String name, int numOfSongs, int thumbnail) {
+    public Main_Bean(String name, int numOfSongs, int thumbnail) {
         this.name = name;
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;

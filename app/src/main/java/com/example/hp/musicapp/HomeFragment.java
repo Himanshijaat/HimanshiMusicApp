@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,8 +18,8 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private AlbumsAdapter adapter;
-    private List<Album> albumList;
+    private HomeAdapter adapter;
+    private List<Main_Bean> albumList;
 
     @Nullable
     @Override
@@ -29,7 +28,7 @@ public class HomeFragment extends Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         albumList = new ArrayList<>();
-        adapter = new AlbumsAdapter(getActivity(), albumList);
+        adapter = new HomeAdapter(getActivity(), albumList);
 
         prepareAlbums();
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -49,22 +48,22 @@ public class HomeFragment extends Fragment {
                 R.drawable.om1,
                 R.drawable.om1,
         };
-        Album a = new Album("Panchang", 13, covers[0]);
+        Main_Bean a = new Main_Bean("Panchang", 13, covers[0]);
         albumList.add(a);
 
-        a = new Album("All Aartiyan", 8, covers[1]);
+        a = new Main_Bean("All Aartiyan", 8, covers[1]);
         albumList.add(a);
 
-        a = new Album("Pooja/Paath", 11, covers[2]);
+        a = new Main_Bean("Pooja/Paath", 11, covers[2]);
         albumList.add(a);
 
-        a = new Album("Horroscope", 12, covers[3]);
+        a = new Main_Bean("Horroscope", 12, covers[3]);
         albumList.add(a);
 
-        a = new Album("Festival Aartiyan", 14, covers[4]);
+        a = new Main_Bean("Festival Aartiyan", 14, covers[4]);
         albumList.add(a);
 
-        a = new Album("Dainik Aartiyan", 1, covers[5]);
+        a = new Main_Bean("Dainik Aartiyan", 1, covers[5]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();

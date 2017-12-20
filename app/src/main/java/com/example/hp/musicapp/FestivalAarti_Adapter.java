@@ -11,21 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 /**
  * Created by SANTOSH on 18-Dec-17.
  */
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class Fest_Song_List_Adapter extends BaseAdapter {
+public class FestivalAarti_Adapter extends BaseAdapter {
 
     String[] festName;
     Context context;
     int[] festImage;
     private static LayoutInflater inflater=null;
 
-    public Fest_Song_List_Adapter(Context context, int[] festImage, String[] festName) {
+    public FestivalAarti_Adapter(Context context, int[] festImage, String[] festName) {
         this.festName = festName;
         this.context = context;
         this.festImage = festImage;
@@ -57,7 +55,7 @@ public class Fest_Song_List_Adapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
         Holder holder=new Holder();
-        View rowView=inflater.inflate(R.layout.custom_festive_song_list,null);
+        View rowView=inflater.inflate(R.layout.festivalAarti_item,null);
         holder.festName=(TextView) rowView.findViewById(R.id.festivalName);
         holder.festImage=(ImageView)rowView.findViewById(R.id.festivalImage);
         holder.festImage.setImageResource(festImage[position]);
