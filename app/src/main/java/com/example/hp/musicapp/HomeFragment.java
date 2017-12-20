@@ -67,12 +67,6 @@ public class HomeFragment extends Fragment {
         a = new Album("Dainik Aartiyan", 1, covers[5]);
         albumList.add(a);
 
-
-
-
-
-
-
         adapter.notifyDataSetChanged();
     }
 
