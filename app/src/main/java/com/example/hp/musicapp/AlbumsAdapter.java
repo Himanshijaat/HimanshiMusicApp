@@ -1,6 +1,10 @@
 package com.example.hp.musicapp;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +47,26 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         @Override
         public void onClick(View view) {
             int position=getPosition();
-            Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+
+            switch (position){
+                case 0:
+                    Toast.makeText(mContext, "1 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 1:
+                    Toast.makeText(mContext, "2 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    Toast.makeText(mContext, "3 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 3:
+                    Toast.makeText(mContext, "4 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+                case 4:
+
+                case 5:
+                    Toast.makeText(mContext, "6 pressed", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
 

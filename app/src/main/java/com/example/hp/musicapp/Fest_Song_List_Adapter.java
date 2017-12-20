@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Created by SANTOSH on 18-Dec-17.
@@ -17,19 +20,22 @@ import android.widget.TextView;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Fest_Song_List_Adapter extends BaseAdapter {
 
-    String[] fest_Names;
-    int[] fest_Images;
-    FestivalSongs context;
+    String[] festName;
+    Context context;
+    int[] festImage;
+    private static LayoutInflater inflater=null;
 
-    public Fest_Song_List_Adapter(FestivalSongs context,String[] fest_Names, int[] fest_Images) {
-        this.fest_Names = fest_Names;
-        this.fest_Images = fest_Images;
+    public Fest_Song_List_Adapter(Context context, int[] festImage, String[] festName) {
+        this.festName = festName;
         this.context = context;
+        this.festImage = festImage;
+
+        inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return fest_Names.length;
+        return festName.length;
     }
 
     @Override
@@ -42,17 +48,26 @@ public class Fest_Song_List_Adapter extends BaseAdapter {
         return pos;
     }
 
+    public class Holder {
+        TextView festName;
+        ImageView festImage;
+
+    }
+
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup){
-        LayoutInflater inflater=context.getLayoutInflater();
-
-        View rowView=inflater.inflate(R.layout.custom_festive_song_list,null,true);
-        TextView fest_Name=(TextView) view.findViewById(R.id.festivalName);
-
-        ImageView fest_Image=(ImageView)view.findViewById(R.id.festivalImage);
-        fest_Name.setText(fest_Names[position]);
-        fest_Image.setClipToOutline(true);
-        fest_Image.setImageResource(fest_Images[position]);
+    public View getView(final int position, View view, ViewGroup viewGroup) {
+        Holder holder=new Holder();
+        View rowView=inflater.inflate(R.layout.custom_festive_song_list,null);
+        holder.festName=(TextView) rowView.findViewById(R.id.festivalName);
+        holder.festImage=(ImageView)rowView.findViewById(R.id.festivalImage);
+        holder.festImage.setImageResource(festImage[position]);
+        holder.festName.setText(festName[position]);
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "clicked "+position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rowView;
     }
