@@ -42,6 +42,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         @Override
         public void onClick(View view) {
             int position=getPosition();
+
             Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
         }
     }

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="false"
     android:orientation="vertical"
    >
 
@@ -11,7 +10,6 @@
        android:id="@+id/framelayout"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-
-       />
+     />
 
 </LinearLayout>
