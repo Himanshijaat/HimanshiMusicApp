@@ -48,22 +48,22 @@ public class HomeFragment extends Fragment {
                 R.drawable.om1,
                 R.drawable.om1,
         };
-        Main_Bean a = new Main_Bean("पंचांग", 13, covers[0]);
+        Main_Bean a = new Main_Bean(getString(R.string.home_panchang), 13, covers[0]);
         albumList.add(a);
 
-        a = new Main_Bean("सभी आरतियाँ", 8, covers[1]);
+        a = new Main_Bean(getString(R.string.home_all_aartiyan), 8, covers[1]);
         albumList.add(a);
 
-        a = new Main_Bean("पूजा पाठ", 11, covers[2]);
+        a = new Main_Bean(getString(R.string.home_pooja_path), 11, covers[2]);
         albumList.add(a);
 
-        a = new Main_Bean("राशि फल", 12, covers[3]);
+        a = new Main_Bean(getString(R.string.home_horoscope), 12, covers[3]);
         albumList.add(a);
 
-        a = new Main_Bean("त्योहारों की आरतियाँ", 14, covers[4]);
+        a = new Main_Bean(getString(R.string.home_festival_aartiyan), 14, covers[4]);
         albumList.add(a);
 
-        a = new Main_Bean("दैनिक आरतियाँ", 1, covers[5]);
+        a = new Main_Bean(getString(R.string.home_dainik_aartiyan), 1, covers[5]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();
