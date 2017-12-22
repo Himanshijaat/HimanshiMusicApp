@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    >
 
     <ListView
         android:id="@+id/festivalSongList"
@@ -14,7 +14,6 @@
         android:layout_marginBottom="10dp"
         android:dividerHeight="10dp"
         android:divider="#00ffffff"
-        android:background="@color/colorPrimaryDark"
         />
 
 </LinearLayout>

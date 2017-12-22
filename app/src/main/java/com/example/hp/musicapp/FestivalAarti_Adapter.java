@@ -1,5 +1,9 @@
 package com.example.hp.musicapp;
 
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -63,7 +67,17 @@ public class FestivalAarti_Adapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "clicked "+position, Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                    {
+                        Play_Songs playsongs=new Play_Songs();
+                        FragmentManager frag=((Activity)context).getFragmentManager();
+                        FragmentTransaction ft=frag.beginTransaction();
+                        ft.replace(R.id.framelayout,playsongs);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    }
+                }
             }
         });
 

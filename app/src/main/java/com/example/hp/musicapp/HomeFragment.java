@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
                 R.drawable.om1,
                 R.drawable.om1,
         };
-        Main_Bean a = new Main_Bean("पांचग", 13, covers[0]);
+        Main_Bean a = new Main_Bean("पंचांग", 13, covers[0]);
         albumList.add(a);
 
         a = new Main_Bean("सभी आरतियाँ", 8, covers[1]);
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
         a = new Main_Bean("पूजा पाठ", 11, covers[2]);
         albumList.add(a);
 
-        a = new Main_Bean("राशिफल", 12, covers[3]);
+        a = new Main_Bean("राशि फल", 12, covers[3]);
         albumList.add(a);
 
         a = new Main_Bean("त्योहारों की आरतियाँ", 14, covers[4]);

@@ -47,7 +47,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     ft.addToBackStack(null);
                     ft.commit();
                     Toast.makeText(mContext, "panchang_frag", Toast.LENGTH_SHORT).show();
-           break;
+                    break;
                 case 1:
                     All_Aartiyan_frag frag1=new All_Aartiyan_frag();
                     android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
@@ -77,7 +77,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     break;
                 case 4:
                     FestivalAarti_Frag frag4=new FestivalAarti_Frag();
-                     android.app.FragmentManager fm4=((Activity)mContext).getFragmentManager();
+                    android.app.FragmentManager fm4=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft4=fm4.beginTransaction();
                     ft4.replace(R.id.framelayout,frag4);
                     ft4.addToBackStack(null);
