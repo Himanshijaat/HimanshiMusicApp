@@ -43,34 +43,58 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             int position=getPosition();
             switch (position) {
                 case 0:
-                    FestivalAarti_Frag frag0=new FestivalAarti_Frag();
+                    Panchang_Fragment frag0=new Panchang_Fragment();
                     android.app.FragmentManager fm=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft=fm.beginTransaction();
                     ft.replace(R.id.framelayout,frag0);
                     ft.addToBackStack(null);
                     ft.commit();
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
-           break;
+                    Toast.makeText(mContext, "panchang_frag", Toast.LENGTH_SHORT).show();
+                    break;
                 case 1:
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+                    All_Aartiyan_frag frag1=new All_Aartiyan_frag();
+                    android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft1=fm1.beginTransaction();
+                    ft1.replace(R.id.framelayout,frag1);
+                    ft1.addToBackStack(null);
+                    ft1.commit();
+                    Toast.makeText(mContext, "all aartiyan", Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+                    Pooja_Paath_frag frag2=new Pooja_Paath_frag();
+                    android.app.FragmentManager fm2=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft2=fm2.beginTransaction();
+                    ft2.replace(R.id.framelayout,frag2);
+                    ft2.addToBackStack(null);
+                    ft2.commit();
+                    Toast.makeText(mContext, "pooja paath frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+                    Horroscope_frag frag3=new Horroscope_frag();
+                    android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft3=fm3.beginTransaction();
+                    ft3.replace(R.id.framelayout,frag3);
+                    ft3.addToBackStack(null);
+                    ft3.commit();
+                    Toast.makeText(mContext, "horroscope frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 4:
                     FestivalAarti_Frag frag4=new FestivalAarti_Frag();
-                     android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
-                    FragmentTransaction ft1=fm1.beginTransaction();
-                    ft1.replace(R.id.framelayout,frag4);
-                    ft1.addToBackStack(null);
-                    ft1.commit();
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+                    android.app.FragmentManager fm4=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft4=fm4.beginTransaction();
+                    ft4.replace(R.id.framelayout,frag4);
+                    ft4.addToBackStack(null);
+                    ft4.commit();
+                    Toast.makeText(mContext, "festival aartiyan frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 5:
-                    Toast.makeText(mContext, "click item "+position, Toast.LENGTH_SHORT).show();
+                    Dainik_Aartiyan_frag frag5=new Dainik_Aartiyan_frag();
+                    android.app.FragmentManager fm5=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft5=fm5.beginTransaction();
+                    ft5.replace(R.id.framelayout,frag5);
+                    ft5.addToBackStack(null);
+                    ft5.commit();
+                    Toast.makeText(mContext, "dainik aartiyan frag", Toast.LENGTH_SHORT).show();
                     break;
             }
 
@@ -86,7 +110,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.homeLayout_item, parent, false);
+                .inflate(R.layout.homelayout_item, parent, false);
 
         return new MyViewHolder(itemView);
     }

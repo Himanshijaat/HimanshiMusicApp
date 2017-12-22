@@ -30,6 +30,7 @@
         android:textSize="25dp"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:text="TextView" />
+        android:text="गुरु पाठ"
+        android:padding="5dp"/>
     </LinearLayout>
 </LinearLayout>
