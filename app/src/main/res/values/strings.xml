@@ -7,4 +7,18 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="home_panchang">पंचांग</string>
+    <string name="home_all_aartiyan">सभी आरतियाँ</string>
+    <string name="home_dainik_aartiyan">दैनिक आरतियाँ</string>
+    <string name="home_horoscope">राशि फल</string>
+    <string name="home_pooja_path">पूजा पाठ</string>
+    <string name="home_festival_aartiyan">त्योहारों की आरतियाँ</string>
+
+    <string name="fest_holi">होली</string>
+    <string name="fest_diwali">दिवाली</string>
+    <string name="fest_guruparv">गुरु पर्व</string>
+    <string name="fest_navratre">नवरात्रे</string>
+    <string name="fest_ram_navami">राम नवमी</string>
+    <string name="fest_christmas">क्रिसमस</string>
 </resources>
