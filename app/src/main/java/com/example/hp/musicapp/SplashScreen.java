@@ -3,10 +3,11 @@ package com.example.hp.musicapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity  implements TextToSpeech.OnInitListener{
 
     private final int splashLenght=5000;
     MediaPlayer mediaPlayer;
@@ -34,5 +35,10 @@ public class SplashScreen extends AppCompatActivity {
         super.onPause();
         mediaPlayer.release();
         finish();
+    }
+
+    @Override
+    public void onInit(int i) {
+
     }
 }

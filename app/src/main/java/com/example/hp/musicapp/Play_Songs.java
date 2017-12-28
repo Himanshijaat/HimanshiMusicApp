@@ -168,7 +168,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
         pauseArray=imageArray;
         dura=mp.getDuration();
         handler.removeCallbacks(runnable);
-        dura=dura/12;
+        dura=dura/25;
             runnable = new Runnable() {
                 int i = 0;
 
