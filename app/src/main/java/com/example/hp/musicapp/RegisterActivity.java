@@ -152,8 +152,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             //Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
             Toast.makeText(this, "User Exists. Try other email id.", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     /**

@@ -9,13 +9,13 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <!--Home Page-->
-    <string name="home_panchang">पंचांग</string>
-    <string name="home_all_aartiyan">सभी आरतियाँ</string>
-    <string name="home_dainik_aartiyan">दैनिक आरतियाँ</string>
-    <string name="home_horoscope">राशि फल</string>
-    <string name="home_pooja_path">पूजा पाठ</string>
-    <string name="home_festival_aartiyan">त्योहारों की आरतियाँ</string>
-
+    <string name="home_panchang">Panchang</string>
+    <string name="home_all_aartiyan">All Artiyan</string>
+    <string name="home_dainik_aartiyan">Dainik Aartiyan</string>
+    <string name="home_horoscope">Horoscope</string>
+    <string name="home_pooja_path">Pooja Path</string>
+    <string name="home_festival_aartiyan">Festival Aartiyan</string>
++
     <!--Festival Aartiyan-->
     <string name="fest_holi">होली</string>
     <string name="fest_diwali">दिवाली</string>

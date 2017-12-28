@@ -26,19 +26,19 @@
                 android:clickable="true"
                 android:scaleType="fitXY" />
 
-<TextView
-    android:id="@+id/textview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="#0d0d0d"
-    android:textSize="15sp"
-    android:text="himanshi"
-    android:padding="5dp"
-    android:layout_alignBottom="@+id/thumbnail"
-    android:textStyle="bold"
-    android:layout_marginBottom="15dp"
-    android:layout_centerInParent="true"
-    />
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0d0d0d"
+                android:textSize="15sp"
+                android:text="himanshi"
+                android:padding="5dp"
+                android:layout_alignBottom="@+id/thumbnail"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"
+                android:layout_centerInParent="true"
+                />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
