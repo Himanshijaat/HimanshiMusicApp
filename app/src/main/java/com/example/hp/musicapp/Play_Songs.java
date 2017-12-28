@@ -2,9 +2,11 @@ package com.example.hp.musicapp;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +111,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
         }
 
     }
+
     private void playSong() {
         // check for already playing
         if (mp.isPlaying()) {
@@ -122,6 +125,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
             // Resume song
             if (mp != null) {
                 mp.start();
+                handler.removeCallbacks(runnable);
                 changeImage(pauseArray);
                 // Changing button image to pause button
                 btnPlay.setImageResource(R.drawable.pause);
@@ -129,7 +133,6 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
                 updateProgressBar();
             }
         }
-
     }
     private void nextSong() {
         Toast.makeText(context, "next song", Toast.LENGTH_SHORT).show();
@@ -156,7 +159,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
         songTotalDuration.setText("0:00");
         // Displaying time completed playing
         songCurrentDuration.setText("0:00");
-
+        handler.removeCallbacks(runnable);
         // Updating progress bar
         songProgressBar.setProgress(0);
         mHandler.removeCallbacks(mUpdateTimeTask);
@@ -172,6 +175,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
             runnable = new Runnable() {
                 int i = 0;
 
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 public void run() {
                     fullImage.setImageResource(imageArray[i]);
                     i++;
@@ -179,7 +183,6 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
                         i = 0;
                     }
                     handler.postDelayed(this, dura);  //changes after 3 sec
-                    Toast.makeText(context, "duration " + dura, Toast.LENGTH_SHORT).show();
                 }
             };
             handler.postDelayed(runnable, 0);
@@ -203,7 +206,7 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
             }else {
                 changeImage(hanumanImage);
             }
-
+            
             songProgressBar.setOnSeekBarChangeListener(this); // Important
             mp.setOnCompletionListener(this); // Important
             // Changing Button Image to pause image
@@ -285,20 +288,19 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
         super.onPause();
         btnPlay.setImageResource(R.drawable.playm);
         mp.pause();
+        handler.removeCallbacks(runnable);
     }
     @Override
     public void onResume() {
         super.onResume();
         if (mp != null) {
             mp.start();
+            handler.postDelayed(runnable,dura);
             // Changing button image to pause button
             btnPlay.setImageResource(R.drawable.pause);
             updateProgressBar();
         }
-
     }
-
-
     /**
      * On Song Playing completed
      */
