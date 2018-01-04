@@ -24,7 +24,7 @@ public class SplashScreen extends AppCompatActivity  implements TextToSpeech.OnI
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent main = new Intent(SplashScreen.this, Login_Page.class);
+                Intent main = new Intent(SplashScreen.this, Demi.class);
                 startActivity(main);
                 finish();
             }
