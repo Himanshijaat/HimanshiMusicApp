@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.framelayout, frag0).commit();
                 break;
-
         }
     }
 }

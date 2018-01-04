@@ -32,6 +32,7 @@ public class Login_Page extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__page);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
@@ -99,7 +100,7 @@ public class Login_Page extends AppCompatActivity implements View.OnClickListene
         }
         else {
             // Snack Bar to show success message that record is wrong
-            //Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+            //Snackbar.make(nestedScrollView, getStrHing(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
             Toast.makeText(activity, "User not exits", Toast.LENGTH_SHORT).show();
         }
     }

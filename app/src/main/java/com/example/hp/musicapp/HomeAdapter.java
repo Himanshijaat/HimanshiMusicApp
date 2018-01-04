@@ -128,12 +128,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                    // Toast.makeText(mContext, "pooja paath frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
-                    Horroscope_frag frag3=new Horroscope_frag();
+                    /*Horroscope_frag frag3=new Horroscope_frag();
+                    android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft3=fm3.beginTransaction();
+                    ft3.replace(R.id.framelayout,frag3);
+                    ft3.addToBackStack(null);
+                    ft3.commit();*/
+                    dragThali frag3=new dragThali();
                     android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft3=fm3.beginTransaction();
                     ft3.replace(R.id.framelayout,frag3);
                     ft3.addToBackStack(null);
                     ft3.commit();
+
                      i=0;
                     if ( i== TextToSpeech.SUCCESS) {
 
