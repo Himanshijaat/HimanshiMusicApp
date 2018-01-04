@@ -3,27 +3,17 @@ package com.example.hp.musicapp;
 import android.app.Fragment;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Formatter;
 import java.util.List;
-import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -47,8 +37,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         return view;
     }
-
-
 
     private void prepareAlbums() {
         int[] covers = new int[]{
@@ -79,7 +67,6 @@ public class HomeFragment extends Fragment {
 
         adapter.notifyDataSetChanged();
     }
-
 
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
