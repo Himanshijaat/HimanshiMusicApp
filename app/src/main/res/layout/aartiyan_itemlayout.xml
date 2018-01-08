@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shadow_background">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:text="ksddfdsdasd"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/textview_aartiyan"/>
+        <Button
+            android:id="@+id/download_btn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:background="@android:drawable/stat_sys_download"
+            android:layout_marginLeft="300dp"
+            />
+        <ProgressBar
+            android:id="@+id/circularProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:max="100"
+            android:progress="0"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:progressDrawable="@drawable/progressbar_round"
+            android:secondaryProgress="100"
+            />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -27,6 +27,7 @@ public class FestivalAarti_Frag extends Fragment {
 
         festList=(ListView) view.findViewById(R.id.festivalSongList);
         festList.setAdapter(new FestivalAarti_Adapter(getActivity(),festImages,festNames));
+
         return view;
     }
 }

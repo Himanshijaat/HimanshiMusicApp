@@ -1,48 +1,34 @@
 package com.example.hp.musicapp;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.NotificationManager;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.nihaskalam.progressbuttonlibrary.CircularProgressButton;
+import android.content.res.Resources;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -53,70 +39,98 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * Created by hp on 12/29/2017.
+ * Created by Kshitij on 11/30/2017.
  */
-
-public class Demi extends Activity {
-
+public class AllAartiyan_Adapter extends BaseAdapter{
     private String TAG = MainActivity.class.getSimpleName();
-
-    Button bDownload;
+    Context mContext;
+    LayoutInflater inflater;
+    private ArrayList<Main_Bean> arraylist;
+    String songID;
     private NotificationManager mNotifyManager;
     private NotificationCompat.Builder build;
     int id = 1;
-    ProgressBar progressBar;
-    TextView tv;
-    Drawable drawable;
+    ViewHolder holder;
+      // Values to be displayed
+    public AllAartiyan_Adapter(Context context, ArrayList<Main_Bean> data) {
+        mContext = context;
+        //this.data = data;
+        this.arraylist = new ArrayList<>(data);
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+        inflater = LayoutInflater.from(mContext);
+        //this.arraylist.addAll(data);
+    }
+
+    public class ViewHolder {
+        TextView name;
+        Button download;
+        ProgressBar roundProgressBar;
+    }
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.demi);
-        bDownload=findViewById(R.id.button_download);
-        progressBar=findViewById(R.id.circularDProgressbar);
-        tv = (TextView) findViewById(R.id.tv);
+    public int getCount() {
+        return arraylist.size();
+    }
 
-        Resources res = getResources();
-        drawable = res.getDrawable(R.drawable.progressbar_round);
-        progressBar.setProgress(0);   // Main Progress
-        progressBar.setSecondaryProgress(100); // Secondary Progress
-        progressBar.setMax(100); // Maximum Progress
-        progressBar.setProgressDrawable(drawable);
+    @Override
+    public Main_Bean getItem(int position) {
 
-        bDownload.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+        return arraylist.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public View getView(final int position, View view, ViewGroup parent) {
+
+        if (view == null) {
+
+            holder = new ViewHolder();
+            view = inflater.inflate(R.layout.aartiyan_itemlayout,parent,false);
+            // Locate the TextViews in listview_item.xml
+            holder.name = (TextView) view.findViewById(R.id.textview_aartiyan);
+            holder.download=(Button)view.findViewById(R.id.download_btn);
+            holder.roundProgressBar=view.findViewById(R.id.circularProgressbar);
+
+            view.setTag(holder);
+
+        } else {
+            holder = (ViewHolder) view.getTag();
+        }
+        // Set the results into TextViews
+        holder.name.setText(arraylist.get(position).getName());
+        //songID=arraylist.get(position).getTrackId();
+
+        holder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources res=mContext.getResources();
+                Drawable drawable= res.getDrawable(R.drawable.progressbar_round);
+                holder.roundProgressBar.setVisibility(View.VISIBLE);
 
+                holder.download.setVisibility(View.INVISIBLE);
+                holder.roundProgressBar.setProgress(0);   // Main Progress
+                holder.roundProgressBar.setSecondaryProgress(100); // Secondary Progress
+                holder.roundProgressBar.setMax(100); // Maximum Progress
+                holder.roundProgressBar.setProgressDrawable(drawable);
 
-                bDownload.setVisibility(View.INVISIBLE);
-             // setProgress(progressBar);
-                progressBar.setProgress(0);   // Main Progress
-                progressBar.setSecondaryProgress(100); // Secondary Progress
-                progressBar.setMax(100); // Maximum Progress
-                progressBar.setProgressDrawable(drawable);
-
-                mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                build = new NotificationCompat.Builder(getApplicationContext());
+                mNotifyManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                build = new NotificationCompat.Builder(mContext.getApplicationContext());
                 build.setContentTitle("Downloading")
                         .setContentText("Download in progress")
                         .setSmallIcon(R.mipmap.ic_launcher);
-                new GetContacts().execute();
-
+                songID=arraylist.get(position).getTrackId();
+                Toast.makeText(mContext, "pos"+songID, Toast.LENGTH_SHORT).show();
+                new DownloadSong().execute();
             }
         });
+        return view;
     }
-    /**
-     * Async task class to get json by making HTTP call
-     */
-
-    private class GetContacts extends AsyncTask<Void, Integer, Integer> {
-
+    private class DownloadSong extends AsyncTask<Void, Integer, Integer> {
         @SuppressLint("NewApi")
         @Override
         protected void onPreExecute() {
@@ -135,8 +149,7 @@ public class Demi extends Activity {
             build.setProgress(100, values[0], false);
             mNotifyManager.notify(id, build.build());
 
-            progressBar.setProgress(values[0]);
-            //tv.setText(values[0]+"%");
+            holder.roundProgressBar.setProgress(values[0]);
 
             super.onProgressUpdate(values);
         }
@@ -154,7 +167,7 @@ public class Demi extends Activity {
                 data += "&" + URLEncoder.encode("password", "UTF-8")
                         + "=" + URLEncoder.encode("P@ssw0rd", "UTF-8");
                 data += "&" + URLEncoder.encode("song_id", "UTF-8")
-                        + "=" + URLEncoder.encode("SG3", "UTF-8");
+                        + "=" + URLEncoder.encode(songID, "UTF-8");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -209,8 +222,8 @@ public class Demi extends Activity {
                     Log.d(TAG, mime);
 
                 }else {
-                        Log.d("msg","no data get");
-                    }
+                    Log.d("msg","no data get");
+                }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (UnsupportedEncodingException e) {
@@ -227,24 +240,19 @@ public class Demi extends Activity {
             return null;
         }
 
-
-
         @Override
         protected void onPostExecute (Integer result) {
             super.onPostExecute(result);
 
             build.setContentText("Download complete");
             // Removes the progress bar
-
             build.setProgress(0, 0, false);
             mNotifyManager.notify(id, build.build());
 
-            progressBar.setProgress(100);
-
-            bDownload.setVisibility(View.VISIBLE);
+            holder.roundProgressBar.setProgress(100);
+            holder.roundProgressBar.setVisibility(View.GONE);
+            holder.download.setBackgroundResource(R.drawable.tick_ok);
 
         }
-
     }
-
 }

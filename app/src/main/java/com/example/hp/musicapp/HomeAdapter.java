@@ -189,7 +189,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                    // Toast.makeText(mContext, " aartiyan frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 5:
-                    Dainik_Aartiyan_frag frag5=new Dainik_Aartiyan_frag();
+                    dragThali frag5=new dragThali();
                     android.app.FragmentManager fm5=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft5=fm5.beginTransaction();
                     ft5.replace(R.id.framelayout,frag5);
