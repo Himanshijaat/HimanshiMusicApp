@@ -45,7 +45,6 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
     private MediaPlayer mp;
     // Handler to update UI timer, progress bar etc,.
     private final Handler mHandler = new Handler();
-    ;
 
     int dura;
 

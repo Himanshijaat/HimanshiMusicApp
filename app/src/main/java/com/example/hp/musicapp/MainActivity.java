@@ -51,10 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
-
         }
-
 
         changeFrag(0);
     }
@@ -73,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             out.close();
         }
     }
-
 
     public void changeFrag(int position) {
         switch (position) {
