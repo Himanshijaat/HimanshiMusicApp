@@ -8,13 +8,16 @@ public class Main_Bean {
     private int numOfSongs;
     private int thumbnail;
 
+
     public Main_Bean() {
     }
+
 
     public Main_Bean(String name, int numOfSongs, int thumbnail) {
         this.name = name;
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;
+
     }
 
     public String getName() {
@@ -40,4 +43,6 @@ public class Main_Bean {
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+
 }

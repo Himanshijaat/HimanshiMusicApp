@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.nihaskalam.progressbuttonlibrary.CircularProgressButton;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -89,8 +90,8 @@ public class Demi extends Activity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                progressBar.setProgress(0);
-                new Thread(new Task()).start();
+
+
               bDownload.setVisibility(View.INVISIBLE);
              // setProgress(progressBar);
                 mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -104,22 +105,7 @@ public class Demi extends Activity {
         });
     }
 
-    class Task implements Runnable {
-        @Override
-        public void run() {
-            for (int i = 0; i <= 10; i++) {
-                final int value = i;
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                progressBar.setProgress(value);
 
-            }
-        }
-
-    }
 
 
 
@@ -138,7 +124,6 @@ public class Demi extends Activity {
             // Displays the progress bar for the first time.
             build.setProgress(100, 0, false);
             mNotifyManager.notify(id, build.build());
-
         }
 
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -151,21 +136,19 @@ public class Demi extends Activity {
             super.onProgressUpdate(values);
         }
 
-
         @Override
         protected Integer doInBackground(Void... arg0) {
 
             URL url = null;
 
             try {
-                url = new URL("http://arbon.in/songsDownload.php");
+                url = new URL("http://arbon.in/songsList.php");
 
                 String data = URLEncoder.encode("user_name", "UTF-8")
                         + "=" + URLEncoder.encode("apper", "UTF-8");
                 data += "&" + URLEncoder.encode("password", "UTF-8")
                         + "=" + URLEncoder.encode("P@ssw0rd", "UTF-8");
-                data += "&" + URLEncoder.encode("song_id", "UTF-8")
-                        + "=" + URLEncoder.encode("SG3", "UTF-8");
+
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -191,33 +174,39 @@ public class Demi extends Activity {
                 Log.d("data", "sb data"+sb);
 
                 jsonStr = sb.toString();
+
                 int i;
                 for (i = 0; i <= 100; i += 5) {
                     // Sets the progress indicator completion percentage
                     publishProgress(Math.min(i, 100));
 
-                        // Sleep for 5 seconds
-                        Thread.sleep(2 * 1000);
+                    // Sleep for 5 seconds
+                    Thread.sleep(2 * 1000);
 
-                    }
-
+                }
                     if (jsonStr != null) {
 
-                    JSONObject jsonObj = new JSONObject(jsonStr);
-                    String name = jsonObj.getString("name");
-                    String data1 = jsonObj.getString("data");
-                    String mime = jsonObj.getString("mime");
 
-                    File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/" + name);
-                    FileOutputStream os = new FileOutputStream(file, true);
-                    os.write(Base64.decode(data1, Base64.NO_WRAP));
-                    os.flush();
-                    os.close();
+                        JSONArray jsonArray=new JSONArray(jsonStr);
+                        // looping through All Contacts
+                        for (int j = 0; j < jsonArray.length(); i++) {
+                            JSONObject c = jsonArray.getJSONObject(j);
+                            String title = c.getString("trackTitle");
 
-                    Log.d(TAG, name);
-                    Log.d(TAG, String.valueOf(file));
-                    Log.d(TAG, mime);
 
+//                    String data1 = jsonObj.getString("data");
+//                    String mime = jsonObj.getString("mime");
+
+                            File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/" + title);
+                            FileOutputStream os = new FileOutputStream(file, true);
+                            //os.write(Base64.decode(data1, Base64.NO_WRAP));
+                            os.flush();
+                            os.close();
+
+                            Log.d(TAG, title);
+                            Log.d(TAG, String.valueOf(file));
+                            // Log.d(TAG, mime);
+                        }
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -240,17 +229,13 @@ public class Demi extends Activity {
         @Override
         protected void onPostExecute (Integer result) {
             super.onPostExecute(result);
-
-
             build.setContentText("Download complete");
             // Removes the progress bar
-
             build.setProgress(0, 0, false);
             mNotifyManager.notify(id, build.build());
             progressBar.setMax(0);
             progressBar.setVisibility(View.GONE);
             bDownload.setVisibility(View.VISIBLE);
-
 
         }
 

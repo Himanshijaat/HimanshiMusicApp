@@ -47,6 +47,7 @@ public class HomeFragment extends Fragment {
                 R.drawable.om1,
                 R.drawable.om1,
         };
+        String [] trackId=new String[]{""};
         Main_Bean a = new Main_Bean(getString(R.string.home_panchang), 13, covers[0]);
         albumList.add(a);
 

@@ -24,9 +24,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     private Context mContext;
     private List<Main_Bean> albumList;
 
-
-
-
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,TextToSpeech.OnInitListener {
         public TextView textView;
         public ImageView thumbnail;
@@ -39,7 +36,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             view.setOnClickListener(this);
             view.setClickable(true);
             thumbnail.setOnClickListener(this);
-
         }
 
         @Override
@@ -55,10 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     ft.commit();
                     int i=0;
                     if ( i== TextToSpeech.SUCCESS) {
-
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
@@ -84,8 +77,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
@@ -111,8 +102,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
@@ -145,8 +134,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
@@ -172,8 +159,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
@@ -199,8 +184,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
                         if (result == TextToSpeech.LANG_MISSING_DATA
                                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                             Log.e("TTS", "This Language is not supported");
