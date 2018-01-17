@@ -7,17 +7,24 @@ public class Main_Bean {
     private String name;
     private int numOfSongs;
     private int thumbnail;
-
+    private String trackId;
 
     public Main_Bean() {
     }
 
+    public String getTrackId() {
+        return trackId;
+    }
 
-    public Main_Bean(String name, int numOfSongs, int thumbnail) {
+    public void setTrackId(String trackId) {
+        this.trackId = trackId;
+    }
+
+    public Main_Bean(String name, int numOfSongs, int thumbnail, String trackId) {
         this.name = name;
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;
-
+        this.trackId=trackId;
     }
 
     public String getName() {
@@ -43,6 +50,4 @@ public class Main_Bean {
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
-
-
 }
