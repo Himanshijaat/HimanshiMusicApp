@@ -9,10 +9,10 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <!--Home Page-->
-    <string name="home_panchang">पंचांग</string>
+    <!--<string name="home_panchang">पंचांग</string>-->
     <string name="home_all_aartiyan">सभी आरतियाँ</string>
-    <string name="home_dainik_aartiyan">दैनिक आरतियाँ</string>
-    <string name="home_horoscope">राशि फल</string>
+    <!--<string name="home_dainik_aartiyan">दैनिक आरतियाँ</string>-->
+    <string name="home_poojan_kriya">पूजन क्रिया</string>
     <string name="home_pooja_path">पूजा पाठ</string>
     <string name="home_festival_aartiyan">त्योहारों की आरतियाँ</string>
 

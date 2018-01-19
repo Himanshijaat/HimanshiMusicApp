@@ -9,12 +9,15 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,7 +45,7 @@ import java.util.List;
  * Created by hp on 12/20/2017.
  */
 
-public class All_Aartiyan_frag extends Fragment {
+public class All_Aartiyan_frag extends Fragment{
     ListView listView;
     private String TAG = MainActivity.class.getSimpleName();
     private ProgressDialog pDialog;
@@ -63,9 +66,10 @@ public class All_Aartiyan_frag extends Fragment {
         adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
         listView = (ListView) view.findViewById(R.id.all_aartiyan_listview);
 
+
         db=new DatabaseHelperForSongList(getActivity());
 
-        if (isNetworkAvaliable(getContext())) {
+        /*if (isNetworkAvaliable(getContext())) {
             //if internet is available
             new GetSongList().execute();
 
@@ -77,7 +81,12 @@ public class All_Aartiyan_frag extends Fragment {
             //Reading values from database
             GetAllData();
 
-        }
+        }*/
+        GetAllData();
+
+        adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
+        listView.setAdapter(adapter);
+
 
         return view;
     }
@@ -96,8 +105,8 @@ public class All_Aartiyan_frag extends Fragment {
             myBean.setName(trackTitle);
             arraylist.add(myBean);
         }
-        adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
-        listView.setAdapter(adapter);
+        /*adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
+        listView.setAdapter(adapter);*/
     }
 
     public static boolean isNetworkAvaliable(Context ctx) {
@@ -115,8 +124,6 @@ public class All_Aartiyan_frag extends Fragment {
             return false;
         }
     }
-
-
     /**
      * Async task class to get json by making HTTP call
      */
@@ -186,8 +193,6 @@ public class All_Aartiyan_frag extends Fragment {
                         myBean.setTrackId(trackId);
                         arraylist.add(myBean);
 
-
-
                     }
                 }
             } catch (MalformedURLException e) {
@@ -210,11 +215,10 @@ public class All_Aartiyan_frag extends Fragment {
             // Dismiss the progress dialog
             if (pDialog.isShowing())
                 pDialog.dismiss();
-            adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
-            listView.setAdapter(adapter);
-
+            /*adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
+            listView.setAdapter(adapter);*/
             db.addSong(arraylist);
-
+            Log.d(TAG, "song added to database");
         }
     }
 }

@@ -48,12 +48,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             int position = getPosition();
             switch (position) {
                 case 0:
-                    Panchang_Fragment frag0 = new Panchang_Fragment();
-                    android.app.FragmentManager fm = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.framelayout, frag0);
-                    ft.addToBackStack(null);
-                    ft.commit();
+                    FestivalAarti_Frag frag4 = new FestivalAarti_Frag();
+                    android.app.FragmentManager fm4 = ((Activity) mContext).getFragmentManager();
+                    FragmentTransaction ft4 = fm4.beginTransaction();
+                    ft4.replace(R.id.framelayout, frag4);
+                    ft4.addToBackStack(null);
+                    ft4.commit();
                     int i = 0;
                     if (i == TextToSpeech.SUCCESS) {
 
@@ -65,14 +65,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                             Log.e("TTS", "This Language is not supported");
                         } else {
 
-                            String text = "Panchang".toString();
+                            String text = "त्योहारों की आरतियाँ".toString();
                             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                         }
 
                     } else {
                         Log.e("TTS", "Initilization Failed!");
                     }
-                    // Toast.makeText(mContext, "panchang_frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 1:
                     All_Aartiyan_frag frag1 = new All_Aartiyan_frag();
@@ -162,35 +161,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     }
                     //Toast.makeText(mContext, "horroscope frag", Toast.LENGTH_SHORT).show();
                     break;
+
                 case 4:
-                    FestivalAarti_Frag frag4 = new FestivalAarti_Frag();
-                    android.app.FragmentManager fm4 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft4 = fm4.beginTransaction();
-                    ft4.replace(R.id.framelayout, frag4);
-                    ft4.addToBackStack(null);
-                    ft4.commit();
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
-
-                        int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
-                        if (result == TextToSpeech.LANG_MISSING_DATA
-                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.e("TTS", "This Language is not supported");
-                        } else {
-
-                            String text = "्योहारों की आरतियाँ".toString();
-                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                        }
-
-                    } else {
-                        Log.e("TTS", "Initilization Failed!");
-                    }
-                    // Toast.makeText(mContext, " aartiyan frag", Toast.LENGTH_SHORT).show();
-                    break;
-                case 5:
-                    Dainik_Aartiyan_frag frag5 = new Dainik_Aartiyan_frag();
+                   Dainik_Aartiyan_frag frag5 = new Dainik_Aartiyan_frag();
                     android.app.FragmentManager fm5 = ((Activity) mContext).getFragmentManager();
                     FragmentTransaction ft5 = fm5.beginTransaction();
                     ft5.replace(R.id.framelayout, frag5);
