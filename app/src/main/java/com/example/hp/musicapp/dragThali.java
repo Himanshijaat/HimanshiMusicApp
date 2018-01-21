@@ -107,7 +107,6 @@ View view=inflater.inflate(R.layout.fragment_drag_thali,container,false);
             return true;
         }
     }
-
     private class shankhClick implements View.OnClickListener {
         @Override
         public void onClick(View view) {
