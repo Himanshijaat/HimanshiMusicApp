@@ -1,9 +1,12 @@
 package com.example.hp.musicapp;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -15,6 +18,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 
 import pl.droidsonroids.gif.GifImageView;
@@ -60,9 +64,10 @@ public class Play_Songs extends android.app.Fragment implements MediaPlayer.OnCo
         btnStop=(ImageView) view.findViewById(R.id.stop);
         songCurrentDuration=(TextView) view.findViewById(R.id.startTime);
         songTotalDuration=(TextView) view.findViewById(R.id.totalTime);
-
+String pos=getArguments().getString("position");
         context=getActivity();
         btnPlay.setImageResource(R.drawable.pause);
+
 
         utils = new Utilities();
         songList=utils.songList;

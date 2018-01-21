@@ -1,6 +1,9 @@
 package com.example.hp.musicapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -30,7 +33,6 @@ import java.util.Locale;
 
 public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitListener {
     SearchView searchView;
-
 
 
 //
@@ -88,14 +90,13 @@ public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitLis
         View view = inflater.inflate(R.layout.pooja_paath_frag, container, false);
         textToSpeech = new TextToSpeech(getActivity(), this);
         // Listview Data
-        final String products[] = {"Ganapathy Puja", "Maha Lakhmi Puja", "Saraswathi Puja",
-                "Durga Puja",
-                "Kali Puja",
-                "Nava graha Puja",
-                "Gayathri Puja"};
+        final String products[] = {"गणपति पूजा", "महा लक्ष्मी पूजा", "सरस्वती पूजा",
+                "दुर्गा पूजा",
+                "नव ग्रह पूजा",
+                "नवरात्रे पूजा"};
 
         lv = (ListView) view.findViewById(R.id.list_view);
-        inputSearch = (EditText) view.findViewById(R.id.inputSearch);
+        //  inputSearch = (EditText) view.findViewById(R.id.inputSearch);
 
         // Adding items to listview
         adapter = new ArrayAdapter<String>(getActivity(), R.layout.pooja_paath_item, R.id.poojaname, products);
@@ -109,9 +110,7 @@ public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitLis
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                Toast.makeText(getActivity(), "item position   " + pos, Toast.LENGTH_SHORT).show();
-                Pdfview_Fragment fragment = new Pdfview_Fragment();
-                getFragmentManager().beginTransaction().replace(R.id.framelayout, fragment).addToBackStack(null).commit();
+                //  Toast.makeText(getActivity(), "item position   " + pos, Toast.LENGTH_SHORT).show();
                 int i = 0;
                 if (i == TextToSpeech.SUCCESS) {
 
@@ -122,9 +121,8 @@ public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitLis
                         Log.e("TTS", "This Language is not supported");
                     } else {
 
-                        String text=products[pos].toString();
-                        textToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null);
-
+                        String text = products[pos].toString();
+                        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 
 
                     }
@@ -132,31 +130,37 @@ public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitLis
                 } else {
                     Log.e("TTS", "Initilization Failed!");
                 }
+                Pdfview_Fragment fragment = new Pdfview_Fragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("id", String.valueOf(pos));
+                fragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.framelayout, fragment).addToBackStack(null).commit();
             }
         });
 
 
-        inputSearch.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-                cs.toString().toLowerCase();
-                adapter.getFilter().filter(cs);
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
+//        inputSearch.addTextChangedListener(new TextWatcher() {
+//
+//            @Override
+//            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+//                // When user changed the Text
+//                cs.toString().toLowerCase();
+//                adapter.getFilter().filter(cs);
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+//                                          int arg3) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable arg0) {
+//                // TODO Auto-generated method stub
+//            }
+//        });
 
 
         return view;
@@ -167,8 +171,6 @@ public class Pooja_Paath_frag extends Fragment implements TextToSpeech.OnInitLis
 
 
     }
-
-
 
 
 }

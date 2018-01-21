@@ -7,17 +7,23 @@
 
     <Button
         android:id="@+id/speck"
-        android:layout_width="100dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:background="@android:drawable/ic_btn_speak_now"/>
+        android:layout_marginLeft="150dp"
+        android:background="@drawable/speaker"/>
 
-
-
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/textview_pdf"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+
+    <!--<com.github.barteksc.pdfviewer.PDFView-->
+    <!--android:id="@+id/pdfView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
 
 
 </LinearLayout>

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         filesUtils = new FilesUtils(MainActivity.this);
 
         if (filesUtils.checkFolder()) {
-            Toast.makeText(MainActivity.this, "folder found", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(MainActivity.this, "folder found", Toast.LENGTH_SHORT).show();
         } else {
             //creates folder for app
             filesUtils.CreateDir();

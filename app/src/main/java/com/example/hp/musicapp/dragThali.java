@@ -6,20 +6,27 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class dragThali extends Fragment {
-    private ImageView img,imgShankh;
+    private ImageView img,imgShankh, imgBell, roliImage, imgThali ;
     private ViewGroup rootLayout;
+    private GifImageView gifBell;
 
     Rect parentRect;
     // original down point
@@ -31,8 +38,8 @@ public class dragThali extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_drag_thali,container,false);
 
+View view=inflater.inflate(R.layout.fragment_drag_thali,container,false);
         final DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         // Display Rect Boundaries
@@ -41,12 +48,30 @@ public class dragThali extends Fragment {
         rootLayout = (ViewGroup) view.findViewById(R.id.view_root);
         img = (ImageView) rootLayout.findViewById(R.id.imageArti);
         imgShankh= (ImageView) rootLayout.findViewById(R.id.imageShankh);
+        imgBell=rootLayout.findViewById(R.id.imageGhanti);
+        gifBell=rootLayout.findViewById(R.id.gifGhanti);
+        roliImage=rootLayout.findViewById(R.id.roli_image);
+        imgThali=rootLayout.findViewById(R.id.imageArtiMove);
+        gifBell.setVisibility(View.GONE);
+        imgThali.setVisibility(View.GONE);
 
-        img.setOnTouchListener(new ChoiceTouchListener());
+        //img.setOnTouchListener(new ChoiceTouchListener());
+        imgBell.setOnClickListener(new bellClick());
         imgShankh.setOnClickListener(new shankhClick());
+        roliImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rootLayout.setBackgroundResource(R.drawable.ganeshji_withtika);
+            }
+        });
+
+        img.setOnClickListener(new MoveThali());
+
 
         return view;
     }
+
+
     private final class ChoiceTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
@@ -98,6 +123,57 @@ public class dragThali extends Fragment {
         super.onPause();
         if(mp!=null){
             mp.stop();
+        }
+    }
+
+    private class bellClick implements View.OnClickListener {
+        @Override
+        public void onClick(final View view) {
+            imgBell.setVisibility(View.GONE);
+            gifBell.setVisibility(View.VISIBLE);
+            Animation anim = new CircleAnimation(img, 150);
+            anim.setDuration(5000);
+            gifBell.startAnimation(anim);
+
+            MediaPlayer mp= MediaPlayer.create(getActivity(),R.raw.temple_bell);
+            mp.start();
+
+            Handler handler=new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    view.clearAnimation();
+                    imgBell.setVisibility(View.VISIBLE);
+                    gifBell.setVisibility(View.GONE);
+                }
+            },5000);
+
+
+        }
+
+    }
+
+    private class MoveThali implements View.OnClickListener {
+        @Override
+        public void onClick(final View view) {
+            img.setVisibility(View.GONE);
+            imgThali.setVisibility(View.VISIBLE);
+            Animation anim = new CircleAnimation(img, 150);
+            anim.setDuration(5000);
+            imgThali.startAnimation(anim);
+
+            Handler handler=new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    view.clearAnimation();
+                    img.setVisibility(View.VISIBLE);
+                    imgThali.setVisibility(View.GONE);
+                }
+            },5000);
+
+
+
         }
     }
 }

@@ -43,27 +43,18 @@ public class HomeFragment extends Fragment {
                 R.drawable.om1,
                 R.drawable.om1,
                 R.drawable.om1,
-                R.drawable.om1,
-                R.drawable.om1,
-                R.drawable.om1,
-        };
-        String[] trackID=new String[]{"",};
-        Main_Bean a = new Main_Bean(getString(R.string.home_panchang), 13, covers[0],trackID[0]);
+                R.drawable.om1};
+        String [] trackId=new String[]{""};
+
+        Main_Bean    a = new Main_Bean(getString(R.string.home_festival_aartiyan), 13,covers[0],trackId[0]);
+        albumList.add(a);
+        a = new Main_Bean(getString(R.string.home_all_aartiyan), 8, covers[1],trackId[0]);
         albumList.add(a);
 
-        a = new Main_Bean(getString(R.string.home_all_aartiyan), 8, covers[1],trackID[0]);
+        a = new Main_Bean(getString(R.string.home_pooja_path), 11, covers[2],trackId[0]);
         albumList.add(a);
 
-        a = new Main_Bean(getString(R.string.home_pooja_path), 11, covers[2],trackID[0]);
-        albumList.add(a);
-
-        a = new Main_Bean(getString(R.string.home_horoscope), 12, covers[3],trackID[0]);
-        albumList.add(a);
-
-        a = new Main_Bean(getString(R.string.home_festival_aartiyan), 14, covers[4],trackID[0]);
-        albumList.add(a);
-
-        a = new Main_Bean(getString(R.string.home_dainik_aartiyan), 1, covers[5],trackID[0]);
+        a = new Main_Bean(getString(R.string.home_panchang), 14, covers[3],trackId[0]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();

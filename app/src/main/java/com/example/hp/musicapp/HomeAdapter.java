@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -45,17 +44,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
         @Override
         public void onClick(View view) {
-            int position = getPosition();
+            int position=getPosition();
             switch (position) {
                 case 0:
-                    Panchang_Fragment frag0 = new Panchang_Fragment();
-                    android.app.FragmentManager fm = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.framelayout, frag0);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                    int i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
+                    int  i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
 
@@ -65,51 +58,53 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                             Log.e("TTS", "This Language is not supported");
                         } else {
 
-                            String text = "Panchang".toString();
+                            String text="्योहारों की आरतियाँ".toString();
                             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                         }
 
                     } else {
                         Log.e("TTS", "Initilization Failed!");
                     }
-                    // Toast.makeText(mContext, "panchang_frag", Toast.LENGTH_SHORT).show();
+                    FestivalAarti_Frag frag4=new FestivalAarti_Frag();
+                    android.app.FragmentManager fm4=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft4=fm4.beginTransaction();
+                    ft4.replace(R.id.framelayout,frag4);
+                    ft4.addToBackStack(null);
+                    ft4.commit();
+                    // Toast.makeText(mContext, " aartiyan frag", Toast.LENGTH_SHORT).show();
                     break;
+
                 case 1:
-                    All_Aartiyan_frag frag1 = new All_Aartiyan_frag();
-                    android.app.FragmentManager fm1 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft1 = fm1.beginTransaction();
-                    ft1.replace(R.id.framelayout, frag1);
+                    i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
+
+                        int result = textToSpeech.setLanguage(new Locale("hi"));
+
+
+                        if (result == TextToSpeech.LANG_MISSING_DATA
+                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.e("TTS", "This Language is not supported");
+                        } else {
+
+                            String text="सभी आरतियाँ".toString();
+                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        }
+
+                    } else {
+                        Log.e("TTS", "Initilization Failed!");
+                    }
+                    All_Aartiyan_frag frag1=new All_Aartiyan_frag();
+                    android.app.FragmentManager fm1=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft1=fm1.beginTransaction();
+                    ft1.replace(R.id.framelayout,frag1);
                     ft1.addToBackStack(null);
                     ft1.commit();
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
-
-                        int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
-                        if (result == TextToSpeech.LANG_MISSING_DATA
-                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.e("TTS", "This Language is not supported");
-                        } else {
-
-                            String text = "सभी आरतियाँ".toString();
-                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                        }
-
-                    } else {
-                        Log.e("TTS", "Initilization Failed!");
-                    }
-                    // Toast.makeText(mContext, "all aartiyan", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(mContext, "all aartiyan", Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
-                    Pooja_Paath_frag frag2 = new Pooja_Paath_frag();
-                    android.app.FragmentManager fm2 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft2 = fm2.beginTransaction();
-                    ft2.replace(R.id.framelayout, frag2);
-                    ft2.addToBackStack(null);
-                    ft2.commit();
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
+
+                    i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
 
@@ -119,58 +114,52 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                             Log.e("TTS", "This Language is not supported");
                         } else {
 
-                            String text = "Pooja paath".toString();
+                            String text="Pooja paath".toString();
                             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                         }
 
                     } else {
                         Log.e("TTS", "Initilization Failed!");
                     }
+                    Pooja_Paath_frag frag2=new Pooja_Paath_frag();
+                    android.app.FragmentManager fm2=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft2=fm2.beginTransaction();
+                    ft2.replace(R.id.framelayout,frag2);
+                    ft2.addToBackStack(null);
+                    ft2.commit();
                     // Toast.makeText(mContext, "pooja paath frag", Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
-                     /*Horroscope_frag frag3=new Horroscope_frag();
-                     android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
-                     FragmentTransaction ft3=fm3.beginTransaction();
-                     ft3.replace(R.id.framelayout,frag3);
-                     ft3.addToBackStack(null);
-                     ft3.commit();*/
-                    dragThali frag3 = new dragThali();
-                    android.app.FragmentManager fm3 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft3 = fm3.beginTransaction();
-                    ft3.replace(R.id.framelayout, frag3);
+                    i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
+
+                        int result = textToSpeech.setLanguage(new Locale("hi"));
+
+
+                        if (result == TextToSpeech.LANG_MISSING_DATA
+                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.e("TTS", "This Language is not supported");
+                        } else {
+
+                            String text="पूजन क्रिया".toString();
+                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        }
+
+                    } else {
+                        Log.e("TTS", "Initilization Failed!");
+                    }
+                    dragThali frag3=new dragThali();
+                    android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft3=fm3.beginTransaction();
+                    ft3.replace(R.id.framelayout,frag3);
                     ft3.addToBackStack(null);
                     ft3.commit();
-
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
-
-                        int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
-                        if (result == TextToSpeech.LANG_MISSING_DATA
-                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.e("TTS", "This Language is not supported");
-                        } else {
-
-                            String text = "राशि फल".toString();
-                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                        }
-
-                    } else {
-                        Log.e("TTS", "Initilization Failed!");
-                    }
                     //Toast.makeText(mContext, "horroscope frag", Toast.LENGTH_SHORT).show();
                     break;
-                case 4:
-                    FestivalAarti_Frag frag4 = new FestivalAarti_Frag();
-                    android.app.FragmentManager fm4 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft4 = fm4.beginTransaction();
-                    ft4.replace(R.id.framelayout, frag4);
-                    ft4.addToBackStack(null);
-                    ft4.commit();
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
+           /*     case 4:
+
+                    i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
 
                         int result = textToSpeech.setLanguage(new Locale("hi"));
 
@@ -180,46 +169,53 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                             Log.e("TTS", "This Language is not supported");
                         } else {
 
-                            String text = "्योहारों की आरतियाँ".toString();
+                            String text="Panchang".toString();
                             textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                         }
 
                     } else {
                         Log.e("TTS", "Initilization Failed!");
                     }
-                    // Toast.makeText(mContext, " aartiyan frag", Toast.LENGTH_SHORT).show();
+                    Panchang_Fragment frag0=new Panchang_Fragment();
+                    android.app.FragmentManager fm=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft=fm.beginTransaction();
+                    ft.replace(R.id.framelayout,frag0);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    // Toast.makeText(mContext, "panchang_frag", Toast.LENGTH_SHORT).show();
                     break;
+
                 case 5:
-                    Dainik_Aartiyan_frag frag5 = new Dainik_Aartiyan_frag();
-                    android.app.FragmentManager fm5 = ((Activity) mContext).getFragmentManager();
-                    FragmentTransaction ft5 = fm5.beginTransaction();
-                    ft5.replace(R.id.framelayout, frag5);
+
+                    i=0;
+                    if ( i== TextToSpeech.SUCCESS) {
+
+                        int result = textToSpeech.setLanguage(new Locale("hi"));
+
+
+                        if (result == TextToSpeech.LANG_MISSING_DATA
+                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.e("TTS", "This Language is not supported");
+                        } else {
+
+                            String text="Dainik Aartiyan".toString();
+                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        }
+
+                    } else {
+                        Log.e("TTS", "Initilization Failed!");
+                    }
+                    Dainik_Aartiyan_frag frag5=new Dainik_Aartiyan_frag();
+                    android.app.FragmentManager fm5=((Activity)mContext).getFragmentManager();
+                    FragmentTransaction ft5=fm5.beginTransaction();
+                    ft5.replace(R.id.framelayout,frag5);
                     ft5.addToBackStack(null);
                     ft5.commit();
-                    i = 0;
-                    if (i == TextToSpeech.SUCCESS) {
-
-                        int result = textToSpeech.setLanguage(new Locale("hi"));
-
-
-                        if (result == TextToSpeech.LANG_MISSING_DATA
-                                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.e("TTS", "This Language is not supported");
-                        } else {
-
-                            String text = "Dainik Aartiyan".toString();
-                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                        }
-
-                    } else {
-                        Log.e("TTS", "Initilization Failed!");
-                    }
                     // Toast.makeText(mContext, "dainik aartiyan frag", Toast.LENGTH_SHORT).show();
-                    break;
+                    break;*/
             }
 
         }
-
         @Override
         public void onInit(int i) {
 

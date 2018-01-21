@@ -64,22 +64,7 @@ public class FestivalAarti_Adapter extends BaseAdapter {
         holder.festImage=(ImageView)rowView.findViewById(R.id.festivalImage);
         holder.festImage.setImageResource(festImage[position]);
         holder.festName.setText(festName[position]);
-        rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (position){
-                    case 0:
-                    {
-                        Play_Songs playsongs=new Play_Songs();
-                        FragmentManager frag=((Activity)context).getFragmentManager();
-                        FragmentTransaction ft=frag.beginTransaction();
-                        ft.replace(R.id.framelayout,playsongs);
-                        ft.addToBackStack(null);
-                        ft.commit();
-                    }
-                }
-            }
-        });
+
 
         return rowView;
     }

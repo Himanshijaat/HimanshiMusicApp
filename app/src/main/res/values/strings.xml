@@ -9,7 +9,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <!--Home Page-->
-    <string name="home_panchang">पंचांग</string>
+    <string name="home_panchang">पूजन क्रिया</string>
     <string name="home_all_aartiyan">सभी आरतियाँ</string>
     <string name="home_dainik_aartiyan">दैनिक आरतियाँ</string>
     <string name="home_horoscope">राशि फल</string>
@@ -18,11 +18,12 @@
 
     <!--Festival Aartiyan-->
     <string name="fest_holi">होली</string>
-    <string name="fest_diwali">दिवाली</string>
+    <string name="fest_diwali">दीपावली</string>
     <string name="fest_guruparv">गुरु पर्व</string>
-    <string name="fest_navratre">नवरात्रे</string>
-    <string name="fest_ram_navami">राम नवमी</string>
-    <string name="fest_christmas">क्रिसमस</string>
+    <string name="fest_navratre">गणेश चतुर्थी</string>
+    <string name="fest_ram_navami">हनुमान जयंती</string>
+    <string name="fest_christmas">जनामास्तमी</string>
+
 
     <!--Questions-->
     <string name="ppath_ganpati_pooja">गणपति पूजा</string>

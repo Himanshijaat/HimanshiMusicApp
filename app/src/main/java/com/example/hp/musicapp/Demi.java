@@ -70,16 +70,9 @@ public class Demi extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demi);
         bDownload=findViewById(R.id.button_download);
-        progressBar=(ProgressBar) findViewById(R.id.progressbar_demi);
-        progressBar.setMax(100);
-        progressBar.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        bDownload.setBackgroundResource(R.drawable.christmas);
+      //  progressBar=(ProgressBar) findViewById(R.id.progressbar_demi);
+//        progressBar.setMax(100);
 
-
-    }
-});
 
         bDownload.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")

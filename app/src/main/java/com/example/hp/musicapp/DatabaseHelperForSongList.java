@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,9 @@ public class DatabaseHelperForSongList extends SQLiteOpenHelper {
     // Contacts Table Columns names
     private static final String SONG_ID = "id";
     private static final String SONG_TITLE = "title";
+    private static final String GENRE="genre";
+    private static final String DEITY="deity";
+    private static final String IMAGENAME="imagename";
 
     public DatabaseHelperForSongList(Context context) {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
@@ -36,8 +40,9 @@ public class DatabaseHelperForSongList extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_SONG_LIST_TABLE = "CREATE TABLE " + TABLE_SONG_LIST + "("
-                + SONG_ID + " TEXT," + SONG_TITLE + " TEXT" + ")";
+                + SONG_ID + " TEXT," + SONG_TITLE + " TEXT,"+ GENRE + " TEXT,"+ DEITY + " TEXT," + IMAGENAME + " TEXT"+")";
         db.execSQL(CREATE_SONG_LIST_TABLE);
+
 
     }
 
@@ -54,35 +59,26 @@ public class DatabaseHelperForSongList extends SQLiteOpenHelper {
     public void addSong(ArrayList<Main_Bean> bean) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        if(getSongsCount()<=0) {
 
-            ContentValues values = new ContentValues();
-            for(int j=0;j<bean.size();j++) {
-                values.put(SONG_ID, bean.get(j).getTrackId()); // Contact Name
-                values.put(SONG_TITLE, bean.get(j).getName());// Contact Phone
-                db.insert(TABLE_SONG_LIST, null, values);//insert in database
-            }
-            // Inserting Row
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SONG_LIST);
+        onCreate(db);
+        ContentValues values = new ContentValues();
+        for(int j=0;j<bean.size();j++) {
+            values.put(SONG_ID, bean.get(j).getTrackId()); // Contact Name
+            values.put(SONG_TITLE, bean.get(j).getName());// Contact Phone
+            values.put(GENRE,bean.get(j).getGenre());// image ID
+            values.put(DEITY,bean.get(j).getDeity());
+            values.put(IMAGENAME,bean.get(j).getImageName());
 
-            db.close(); // Closing database connection
-        }else {
-
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_SONG_LIST);
-            onCreate(db);
-            ContentValues values = new ContentValues();
-            for(int j=0;j<bean.size();j++) {
-                values.put(SONG_ID, bean.get(j).getTrackId()); // Contact Name
-                values.put(SONG_TITLE, bean.get(j).getName());// Contact Phone
-                db.insert(TABLE_SONG_LIST, null, values);//insert in database
-            }
-            db.close();
+            db.insert(TABLE_SONG_LIST, null, values);//insert in database
         }
+        db.close();
     }
 
     public ArrayList<Main_Bean> getAllSongList() {
         ArrayList<Main_Bean> songList = new ArrayList<Main_Bean>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_SONG_LIST;
+        String selectQuery = "SELECT * FROM " + TABLE_SONG_LIST;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -93,6 +89,9 @@ public class DatabaseHelperForSongList extends SQLiteOpenHelper {
                 Main_Bean bean = new Main_Bean();
                 bean.setTrackId(cursor.getString(0));
                 bean.setName(cursor.getString(1));
+                bean.setGenre(cursor.getString(2));
+                bean.setDeity(cursor.getString(3));
+                bean.setImageName(cursor.getString(4));
                 // Adding contact to list
                 songList.add(bean);
             } while (cursor.moveToNext());
@@ -103,10 +102,11 @@ public class DatabaseHelperForSongList extends SQLiteOpenHelper {
     // Getting contacts Count
     public int getSongsCount() {
         int count=0;
-        String countQuery = "SELECT  * FROM " + TABLE_SONG_LIST;
+        String countQuery = "SELECT * FROM " + TABLE_SONG_LIST;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         count=cursor.getCount();
+        Log.d("select",cursor.toString());
         cursor.close();
 
         // return count

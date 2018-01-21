@@ -8,23 +8,21 @@ public class Main_Bean {
     private int numOfSongs;
     private int thumbnail;
     private String trackId;
+    private String genre;
+    private String deity;
+    private String imageName;
 
     public Main_Bean() {
     }
 
-    public String getTrackId() {
-        return trackId;
-    }
 
-    public void setTrackId(String trackId) {
-        this.trackId = trackId;
-    }
+
 
     public Main_Bean(String name, int numOfSongs, int thumbnail, String trackId) {
         this.name = name;
         this.numOfSongs = numOfSongs;
         this.thumbnail = thumbnail;
-        this.trackId=trackId;
+        this.trackId = trackId;
     }
 
     public String getName() {
@@ -50,4 +48,36 @@ public class Main_Bean {
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getTrackId() {
+        return trackId;
+    }
+
+    public void setTrackId(String trackId) {
+        this.trackId = trackId;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getDeity() {
+        return deity;
+    }
+
+    public void setDeity(String deity) {
+        this.deity = deity;
+    }
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
 }
