@@ -148,7 +148,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     } else {
                         Log.e("TTS", "Initilization Failed!");
                     }
-                    dragThali frag3=new dragThali();
+                    Pujan_Kiriya_Frag frag3=new Pujan_Kiriya_Frag();
                     android.app.FragmentManager fm3=((Activity)mContext).getFragmentManager();
                     FragmentTransaction ft3=fm3.beginTransaction();
                     ft3.replace(R.id.framelayout,frag3);

@@ -2,6 +2,7 @@ package com.example.hp.musicapp;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -18,8 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,55 +51,73 @@ import java.util.List;
  * Created by hp on 12/20/2017.
  */
 
-public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
+public class All_Aartiyan_frag extends Fragment implements View.OnClickListener {
     ListView listView;
     private String TAG = MainActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     int id = 1;
-   AllAartiyan_Adapter adapter;
+    AllAartiyan_Adapter adapter;
     private Main_Bean myBean;
     ArrayList<Main_Bean> arraylist;
 
     DatabaseHelperForSongList db;
     private ProgressDialog progress;
+    android.support.v7.widget.Toolbar toolbar;
+    Button btn_refresh;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.all_aartiyan_frag, container, false);
         arraylist = new ArrayList<>();
+        toolbar = (android.support.v7.widget.Toolbar) getActivity().findViewById(R.id.toolbar);
+        btn_refresh = (Button) toolbar.findViewById(R.id.btn_refresh);
+        btn_refresh.setVisibility(View.VISIBLE);
+        btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new GetSongList().execute();
 
+            }
+        });
         adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
         listView = (ListView) view.findViewById(R.id.all_aartiyan_listview);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), "postion"+ i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "postion" + i, Toast.LENGTH_SHORT).show();
             }
         });
 
-        db=new DatabaseHelperForSongList(getActivity());
+        db = new DatabaseHelperForSongList(getActivity());
 
         if (isNetworkAvaliable(getContext())) {
             //if internet is available
+//            GetAllData();
+//            if (arraylist.isEmpty()){
+//                new GetSongList().execute();
+//            }else {
+//              //  Toast.makeText(getActivity(), "please refresh it", Toast.LENGTH_SHORT).show();
             new GetSongList().execute();
+
 
         } else {
             //if internet is not available
             Toast.makeText(getActivity(), "Internet not found.", Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), "total row= "+db.getSongsCount(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "total row= " + db.getSongsCount(), Toast.LENGTH_SHORT).show();
 
             //Reading values from database
             GetAllData();
 
         }
-        //download(view);
-       // GetAllData();
+
         return view;
     }
-    public void download(View view){
-        progress=new ProgressDialog(getActivity());
+
+    public void download(View view) {
+        progress = new ProgressDialog(getActivity());
 
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setMessage("Please Wait");
@@ -111,7 +132,7 @@ public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
             public void run() {
                 int jumpTime = 0;
 
-                while(jumpTime < totalProgressTime) {
+                while (jumpTime < totalProgressTime) {
                     try {
                         sleep(200);
                         jumpTime += 5;
@@ -127,11 +148,11 @@ public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
     }
 
     private void GetAllData() {
-        ArrayList<Main_Bean> songDBList=db.getAllSongList();
+        ArrayList<Main_Bean> songDBList = db.getAllSongList();
         for (int j = 0; j < songDBList.size(); j++) {
             String trackId = songDBList.get(j).getTrackId();
             String trackTitle = songDBList.get(j).getName();
-            String genre=songDBList.get(j).getGenre();
+            String genre = songDBList.get(j).getGenre();
             Log.d(TAG, trackTitle);
             myBean = new Main_Bean();
             myBean.setTrackId(trackId);
@@ -227,10 +248,9 @@ public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
                         JSONObject c = jsonArray.getJSONObject(j);
                         String trackTitle = c.getString("trackTitle");
                         String trackId = c.getString("trackId");
-                        String genre=c.getString("genre");
-                        String deity=c.getString("deity");
-                        String imagename=c.getString("imagesnames");
-
+                        String genre = c.getString("genre");
+                        String deity = c.getString("deity");
+                        String imagename = c.getString("imagesnames");
 
 
                         Log.d(TAG, trackTitle);
@@ -242,7 +262,6 @@ public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
                         myBean.setGenre(genre);
                         myBean.setImageName(imagename);
                         arraylist.add(myBean);
-
 
 
                     }
@@ -268,7 +287,7 @@ public class All_Aartiyan_frag extends Fragment implements View.OnClickListener{
             if (pDialog.isShowing())
                 pDialog.dismiss();
             adapter = new AllAartiyan_Adapter(getActivity(), arraylist);
-     ;
+            ;
 
             listView.setAdapter(adapter);
 

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_root"
+    android:id="@+id/pujan_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ganeshji_without"
     >
 
     <ImageView
-        android:id="@+id/roli_image"
+        android:id="@+id/pujan_roliimage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="90dp"
         android:src="@drawable/rolli_image"/>
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifGhanti"
+        android:id="@+id/pujan_bellgif"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
@@ -23,7 +23,7 @@
         android:layout_centerInParent="true"/>
 
     <ImageView
-        android:id="@+id/imageGhanti"
+        android:id="@+id/pujan_bellimage"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="20dp"
@@ -32,7 +32,7 @@
         android:layout_alignParentLeft="true"
        />
     <ImageView
-        android:id="@+id/imageArti"
+        android:id="@+id/pujan_thaliimage"
         android:layout_width="120dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
@@ -40,7 +40,7 @@
         android:layout_centerInParent="true"
       />
     <ImageView
-        android:id="@+id/imageArtiMove"
+        android:id="@+id/pujan_thaliimage_move"
         android:layout_width="120dp"
         android:layout_height="100dp"
         android:src="@drawable/aarti_thali"
@@ -51,7 +51,7 @@
 
 
     <ImageView
-        android:id="@+id/imageShankh"
+        android:id="@+id/pujan_sankimage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/shankh"

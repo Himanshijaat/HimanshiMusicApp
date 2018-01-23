@@ -1,7 +1,7 @@
 package com.example.hp.musicapp;
- 
+
 import android.util.Log;
- 
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,18 +11,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
- 
-/**
- * Created by Ravi Tamada on 01/09/16.
- * www.androidhive.info
- */
+
 public class HttpHandler {
- 
+
     private static final String TAG = HttpHandler.class.getSimpleName();
- 
+
     public HttpHandler() {
     }
- 
+
     public String makeServiceCall(String reqUrl) {
         String response = null;
         try {
@@ -43,11 +39,11 @@ public class HttpHandler {
         }
         return response;
     }
- 
+
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
- 
+
         String line;
         try {
             while ((line = reader.readLine()) != null) {

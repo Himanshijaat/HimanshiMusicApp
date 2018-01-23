@@ -12,6 +12,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,15 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
     private List<Main_Bean> albumList;
-
+    android.support.v7.widget.Toolbar toolbar;
+    Button btn_refresh;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.homefragment,container,false);
-
+        toolbar=(android.support.v7.widget.Toolbar)getActivity().findViewById(R.id.toolbar);
+        btn_refresh=(Button)toolbar.findViewById(R.id.btn_refresh);
+        btn_refresh.setVisibility(View.INVISIBLE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         albumList = new ArrayList<>();
         adapter = new HomeAdapter(getActivity(), albumList);
