@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pujan_kriya_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/fullImageGif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ganeshji_without" />
+
+    <ImageView
+        android:id="@+id/pujan_kriya_roliimage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/rolli_image"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/pujan_bellgif"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/bellimg"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/pujan_bellimage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/bellimg"
+        android:layout_alignParentLeft="true"
+       />
+    <ImageView
+        android:id="@+id/pujan_thaliimage"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/aarti_thali"
+        android:layout_centerInParent="true"
+      />
+    <ImageView
+        android:id="@+id/pujan_thaliimage_move"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:src="@drawable/aarti_thali"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_centerInParent="true"/>
+
+
+
+    <ImageView
+        android:id="@+id/pujan_sankimage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/shankh"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+
+</RelativeLayout>

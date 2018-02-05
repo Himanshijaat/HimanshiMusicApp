@@ -3,7 +3,7 @@
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
-            <solid android:color="@color/colorPrimary" />
+            <solid android:color="@color/progressbarColor1" />
         </shape>
     </item>
 
@@ -11,7 +11,7 @@
         <clip>
             <shape android:shape="rectangle">
                 <corners android:radius="20dp" />
-                <solid android:color="@color/colorPrimaryDark" />
+                <solid android:color="@color/progressbarColor" />
             </shape>
         </clip>
     </item>
@@ -20,7 +20,7 @@
         <clip>
             <shape android:shape="rectangle">
                 <corners android:radius="20dp" />
-                <solid android:color="@color/colorPrimaryDark"/>
+                <solid android:color="@color/progressbarColor"/>
             </shape>
         </clip>
     </item>

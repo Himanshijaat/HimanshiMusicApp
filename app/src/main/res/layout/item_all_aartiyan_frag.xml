@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativelayout"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/shadow_background">
+
+
+<LinearLayout
+    android:id="@+id/linearlayout"
+    android:layout_width="300dp"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:text=""
+        android:id="@+id/textview_aartiyan"
+       />
+    <TextView
+        android:id="@+id/textview_genre"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:text=""
+
+        />
+</LinearLayout>
+    <Button
+        android:id="@+id/download_btn"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/linearlayout"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/download"
+        />
+
+    <ProgressBar
+      android:id="@+id/progressBar1"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/linearlayout"
+        android:visibility="gone"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        android:layout_alignParentRight="true"
+       />
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/linearlayout"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/playm"/>
+
+
+</RelativeLayout>
